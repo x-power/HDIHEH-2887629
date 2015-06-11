@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="telephone=no" name="format-detection" />
+<title>微信认证</title>
+<link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+	<div class="bgThin" style="display:none"></div>
+	<div class="pwHeader">修改密码</div>
+	<div class="pw_msg">
+		<p><input type="text" class="oldPw" placeholder="请输入您的姓名"><span>姓名</span></p>
+		<p class="fix">
+			<select name="select" class="r">
+				<option value="0-10">身份证</option>
+				<option value="10-20">手机号</option>
+				<option value="21-30">基金账号</option>
+				<option value="31-40">中国护照</option>
+				<option value="41-50">军官证</option>
+				<option value="61-70">士兵证</option>
+			</select>
+			<span>证件类型</span>
+		</p>
+		<p><input type="text" class="surePw" placeholder="请输入您的证件号码"><span>证件号码</span></p>
+		<p><input type="password" class="surePw" placeholder="6-20个数字或大小写字母组成"><span>设置密码</span></p>
+		<p><input type="password" class="surePw" placeholder="请再次输入密码"><span>确认密码</span></p>
+		<p class="read">仔细阅读<a href="">认证协议</a>和<a href="">投资人权益须知</a></p>
+		<p class="subBtn Success" style="font-size:16px;">我已阅读并同意上述协议，下一步</p>
+	</div>
+
+	<div class="successTip" style="display:none">
+		<p class="ModyfyMsg">您的密码已修改成功</p>
+		<span>确认</span>
+	</div>
+</body>
+</html>
