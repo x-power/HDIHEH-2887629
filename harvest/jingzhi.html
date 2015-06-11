@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="telephone=no" name="format-detection" />
+<title>净值播报</title>
+<link rel="stylesheet" href="style/style.css">
+<script>
+	function toggerType(type){
+		var liType = document.querySelectorAll('.jzType li');
+		var jzHsI = document.querySelector('.jzHs i');
+
+		for(var i=0;i<liType.length;i++){
+			liType[i].className = '';
+		}
+		type.className = 'active';
+		jzHsI.innerHTML = type.innerHTML+'净值';
+	}
+	window.onload = function(){
+		var jzTitB = document.querySelector('.jzHs b');
+		var jzHeader = document.querySelector('.jzHs');
+		var jzSearch  = document.querySelector('.jzSearch');
+		var jzTit = document.querySelector('.back p');
+
+		var all = document.querySelectorAll('.more');
+		var hideType=document.querySelectorAll('.hideType');
+
+		var liType = document.querySelectorAll('.jzType li');
+
+		var mySew = document.querySelector('#mySew');
+
+		jzTitB.onclick=function(){
+			jzHeader.style.display = 'none';
+			jzSearch.style.display = 'block';
+		}
+
+		jzTit.onclick = function(){
+			jzHeader.style.display = 'block';
+			jzSearch.style.display = 'none';
+		}
+
+		function more(){
+			if(hideType[0].style.display == 'block'){
+				hideType[0].style.display = 'none';
+				this.innerHTML = '更多'
+			}else{
+				hideType[0].style.display = 'block';
+				this.innerHTML = '收起';
+			}
+		}
+		function more2(){
+			if(hideType[1].style.display == 'block'){
+				hideType[1].style.display = 'none';
+				this.innerHTML = '更多'
+			}else{
+				hideType[1].style.display = 'block';
+				this.innerHTML = '收起';
+			}
+		}
+
+		all[0].addEventListener('click',more,false);
+		all[1].addEventListener('click',more,false);
+
+		mySew.onclick = function(){
+			document.querySelector('.seeAbout').style.top = '0%';
+		}
+		document.querySelector('.seeBack').onclick = function(){document.querySelector('.seeAbout').style.top = '100%';}
+	}
+
+</script>
+</head>
+<body>
+<div class="outerWrap">
+	<div class="mainWarp">
+		<div class="jzHeader jzHs">
+			<div class="jzTit">
+				<i>全部净值</i>
+				<p id="mySew">我的关注</p>
+				<b></b>
+			</div>
+			<div class="jzType">
+				<ul class="fix">
+					<li class="active" onclick="toggerType(this)">全部</li>
+					<li onclick="toggerType(this)">股票</li>
+					<li onclick="toggerType(this)">混合</li>
+					<li onclick="toggerType(this)">货币</li>
+					<li class="more">更多</li>
+				</ul>
+				<ul class="fix hideType" >
+					<li onclick="toggerType(this)">ODII</li>
+					<li onclick="toggerType(this)">债券</li>
+					<li onclick="toggerType(this)">指数</li>
+					<li onclick="toggerType(this)">理财</li>
+				</ul>
+			</div>
+		</div>
+		<div class="jzSearch jzHeader" style="display:none">
+			<div class="jzTit back">
+				基金查询
+				<p>返回上层</p>
+			</div>
+			<div class="searchBox">
+				<input type="text" placeholder="全部">
+				<b></b>
+			</div>
+		</div>
+
+		<div class="jzTable">
+			<table>
+				<thead>
+					<th>基金名称</th>
+					<th>单位净值</th>
+					<th>日涨跌↓</th>
+					<th>今年以来↓</th>
+				</thead>
+				<tbody>
+					<tr class="star">
+						<td class="ico">
+							<div>
+								<p>嘉实策略混合</p>
+								<b>070011</b>
+							</div>
+						</td>
+						<td class="jzSz">
+							<p>1.123</p>
+							<b>15/05/05</b>
+						</td>
+						<td class="dayupd">7.85%</td>
+						<td class="dayupd">101.23%</td>
+					</tr>
+					<tr class="star">
+						<td class="ico">
+							<div>
+								<p>嘉实策略混合</p>
+								<b>070011</b>
+							</div>
+						</td>
+						<td class="jzSz">
+							<p>1.123</p>
+							<b>15/05/05</b>
+						</td>
+						<td class="dayupd">7.85%</td>
+						<td class="dayupd">101.23%</td>
+					</tr>
+					<tr>
+						<td class="ico">
+							<div>
+								<p>嘉实策略混合</p>
+								<b>070011</b>
+							</div>
+						</td>
+						<td class="jzSz">
+							<p>1.123</p>
+							<b>15/05/05</b>
+						</td>
+						<td class="dayupd">7.85%</td>
+						<td class="dayupd">101.23%</td>
+					</tr>
+					<tr>
+						<td class="ico">
+							<div>
+								<p>嘉实策略混合</p>
+								<b>070011</b>
+							</div>
+						</td>
+						<td class="jzSz">
+							<p>1.123</p>
+							<b>15/05/05</b>
+						</td>
+						<td class="dayupd">7.85%</td>
+						<td class="dayupd">101.23%</td>
+					</tr>
+					<tr>
+						<td class="ico">
+							<div>
+								<p>嘉实策略混合</p>
+								<b>070011</b>
+							</div>
+						</td>
+						<td class="jzSz">
+							<p>1.123</p>
+							<b>15/05/05</b>
+						</td>
+						<td class="dayupd">7.85%</td>
+						<td class="dayupd">101.23%</td>
+					</tr>
+					<tr>
+						<td class="ico">
+							<div>
+								<p>嘉实策略混合</p>
+								<b>070011</b>
+							</div>
+						</td>
+						<td class="jzSz">
+							<p>1.123</p>
+							<b>15/05/05</b>
+						</td>
+						<td class="dayupd">7.85%</td>
+						<td class="dayupd">101.23%</td>
+					</tr>
+					<tr>
+						<td class="ico">
+							<div>
+								<p>嘉实策略混合</p>
+								<b>070011</b>
+							</div>
+						</td>
+						<td class="jzSz">
+							<p>1.123</p>
+							<b>15/05/05</b>
+						</td>
+						<td class="dayupd">7.85%</td>
+						<td class="dayupd">101.23%</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="seeAbout">
+		<div class="jzHeader jzHs">
+			<div class="jzTit">
+				<i>我的关注</i>
+				<p class="seeBack">返回上层</p>
+			</div>
+			<div class="jzType">
+				<ul class="fix">
+					<li class="active" onclick="toggerType(this)">全部</li>
+					<li onclick="toggerType(this)">股票</li>
+					<li onclick="toggerType(this)">混合</li>
+					<li onclick="toggerType(this)">货币</li>
+					<li class="more">更多</li>
+				</ul>
+				<ul class="fix hideType" >
+					<li onclick="toggerType(this)">ODII</li>
+					<li onclick="toggerType(this)">债券</li>
+					<li onclick="toggerType(this)">指数</li>
+					<li onclick="toggerType(this)">理财</li>
+				</ul>
+			</div>
+		</div>
+		<div class="jzSearch jzHeader" style="display:none">
+			<div class="jzTit back">
+				基金查询
+				<p>返回上层</p>
+			</div>
+			<div class="searchBox">
+				<input type="text" placeholder="全部">
+				<b></b>
+			</div>
+		</div>
+
+		<div class="jzTable">
+			<table>
+				<thead>
+					<th>基金名称</th>
+					<th>单位净值</th>
+					<th>日涨跌↓</th>
+					<th>今年以来↓</th>
+				</thead>
+				<tbody>
+					<tr class="star">
+						<td class="ico">
+							<div>
+								<p>嘉实策略混合</p>
+								<b>070011</b>
+							</div>
+						</td>
+						<td class="jzSz">
+							<p>1.123</p>
+							<b>15/05/05</b>
+						</td>
+						<td class="dayupd">7.85%</td>
+						<td class="dayupd">101.23%</td>
+					</tr>
+					<tr class="star">
+						<td class="ico">
+							<div>
+								<p>嘉实策略混合</p>
+								<b>070011</b>
+							</div>
+						</td>
+						<td class="jzSz">
+							<p>1.123</p>
+							<b>15/05/05</b>
+						</td>
+						<td class="dayupd">7.85%</td>
+						<td class="dayupd">101.23%</td>
+					</tr>
+					<tr>
+						<td class="ico">
+							<div>
+								<p>嘉实策略混合</p>
+								<b>070011</b>
+							</div>
+						</td>
+						<td class="jzSz">
+							<p>1.123</p>
+							<b>15/05/05</b>
+						</td>
+						<td class="dayupd">7.85%</td>
+						<td class="dayupd">101.23%</td>
+					</tr>
+					<tr>
+						<td class="ico">
+							<div>
+								<p>嘉实策略混合</p>
+								<b>070011</b>
+							</div>
+						</td>
+						<td class="jzSz">
+							<p>1.123</p>
+							<b>15/05/05</b>
+						</td>
+						<td class="dayupd">7.85%</td>
+						<td class="dayupd">101.23%</td>
+					</tr>
+					<tr>
+						<td class="ico">
+							<div>
+								<p>嘉实策略混合</p>
+								<b>070011</b>
+							</div>
+						</td>
+						<td class="jzSz">
+							<p>1.123</p>
+							<b>15/05/05</b>
+						</td>
+						<td class="dayupd">7.85%</td>
+						<td class="dayupd">101.23%</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>

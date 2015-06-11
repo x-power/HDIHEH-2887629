@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="telephone=no" name="format-detection" />
+<title>approve</title>
+<link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+	<div class="approveHeader">微信认证</div>
+	<div class="blank">
+		<div class="bl_cardNum"><input type="text"><span>银行卡号</span></div>
+		<p class="nextStep">下一步</p>
+		<div class="problem">忘记银行卡号，使用其他方式进行验证</div>
+	</div>
+	<div class="app_style" style="display: none">
+		<p class="apsTit">您可选择以下任意一种方式进行认证</p>
+		<div class="apsCon">
+			<ul>
+				<li><i></i>交易机构认证</li>
+				<li><i></i>购买产品认证</li>
+				<li><i></i>交易日期认证</li>
+			</ul>
+		</div>
+	</div>
+	<div class="app_style">
+		<p class="apsTit">您在以下哪一机构开户或购买过嘉实基金产品？</p>
+		<div class="apsProduct">
+			<div class="option_wrap">
+				<input type="hidden" id="sex" name="sex" value="male" />
+				<p><span class="active"></span>银河证券</p>
+				<p><span></span>西南证券</p>
+				<p><span></span>西部证券</p>
+				<p><span></span>东吴证券</p>
+				<p><span></span>中国建设银行</p>
+				<p><span></span>中国工商银行</p>
+			</div>
+		</div>
+		<div class="sureoption">确认筛选</div>
+	</div>
+</body>
+</html>

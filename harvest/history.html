@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="telephone=no" name="format-detection" />
+<title>我的足迹</title>
+<link rel="stylesheet" href="style/style.css">
+<script src="js/iscroll.js"></script>
+<script src="js/main.js"></script>
+<script>
+(function(){
+	window.addEventListener("load", function(){
+		var monthItem = document.querySelector('.monthItem');
+		var monthItemP = document.querySelectorAll('.monthItem p');
+		var footSetp = document.querySelectorAll('.footSetp');
+
+		for(var i=0;i<footSetp.length;i++){
+			footSetp[i].style.height = monthItem.style.height = document.documentElement.clientHeight+'px';
+		}
+		
+		for(var i=0;i<monthItemP.length;i++){
+			monthItemP[i].style.height = document.documentElement.clientHeight/12+'px';
+			monthItemP[i].style['line-height'] = document.documentElement.clientHeight/12+'px';
+		}
+
+		//月份排序
+		var oDate=new Date();
+		var now = oDate.getMonth()+1;
+		function monthPx(now){
+			var arr = [1,2,3,4,5,6,7,8,9,10,11,12];
+			function sort(n,m){
+			  return m-n;
+			}
+			var arr2 = arr.slice(0, now).sort(sort).concat(arr.slice(now,arr.length).sort(sort));
+
+			switch(arr2){
+				case 1:
+					return '一';
+			}
+			return arr2;
+		}
+		var arrMonth = monthPx(now);
+
+		for(var i=0;i<arrMonth.length;i++){
+            monthItemP[i].setAttribute("mongNum",arrMonth[i]);
+			switch(arrMonth[i]){
+				case 1:
+					arrMonth[i] =  '一';
+					break;
+				case 2:
+					arrMonth[i] =  '二';
+					break;
+				case 3:
+					arrMonth[i] =  '三';
+					break;
+				case 4:
+					arrMonth[i] =  '四';
+					break;
+				case 5:
+					arrMonth[i] =  '五';
+					break;
+				case 6:
+					arrMonth[i] =  '六';
+					break;
+				case 7:
+					arrMonth[i] =  '七';
+					break;
+				case 8:
+					arrMonth[i] =  '八';
+					break;
+				case 9:
+					arrMonth[i] =  '九';
+					break;
+				case 10:
+					arrMonth[i] =  '十';
+					break;
+				case 11:
+					arrMonth[i] =  '十一';
+					break;
+				case 12:
+					arrMonth[i] =  '十二';
+					break;
+			}
+			monthItemP[i].innerHTML = arrMonth[i]+'月';
+
+            monthItemP[i].onclick = function(){
+                for(var i=0;i<arrMonth.length;i++){
+                     monthItemP[i].className= '';  
+                }
+                this.className= 'active';
+            }
+		};
+	});
+	
+})()
+//右侧scroll
+function loaded () {
+	 new IScroll('#wrapper');
+}
+document.addEventListener('touchmove', function (e) { e.preventDefault();}, false);
+
+
+</script>
+</head>
+<body style="overflow:-hidden;position:relative" onload="loaded()">
+	<div class="monthItem">
+                <p class="active">一月</p>
+                <p>二月</p>
+                <p>三月</p>
+                <p>四月</p>
+                <p>五月</p>
+                <p>六月</p>
+                <p>七月</p>
+                <p>八月</p>
+                <p>九月</p>
+                <p>十月</p>
+                <p>十一月</p>
+                <p>十二月</p>
+	</div>
+	<div class="footSetp" id="wrapper" style="display:block">
+        	<div class="scroller">
+        		<div class="monthStepTop">五月份的足迹</div>
+        	        <div class="line"></div>
+                	<div class="monthStep">
+                		<div class="stepList">
+                			<p>申购嘉实货币A </p>
+                			<p>10000元</p>
+                			<h2>2015-06-10</h2>
+                		</div>
+                		<div class="stepList">
+                			<p>申购嘉实货币A </p>
+                			<p>10000元</p>
+                			<h2>2015-06-10</h2>
+                		</div>
+                		<div class="stepList">
+                			<p>申购嘉实货币A </p>
+                			<p>10000元</p>
+                			<h2>2015-06-10</h2>
+                		</div>
+                		<div class="stepList">
+                			<p>申购嘉实货币A </p>
+                			<p>10000元</p>
+                			<h2>2015-06-10</h2>
+                		</div>
+                		<div class="stepList">
+                			<p>申购嘉实货币A </p>
+                			<p>10000元</p>
+                			<h2>2015-06-10</h2>
+                		</div>
+                		<div class="stepList">
+                			<p>申购嘉实货币A </p>
+                			<p>10000元</p>
+                			<h2>2015-06-10</h2>
+                		</div>
+                		<div class="stepList">
+                			<p>申购嘉实货币A </p>
+                			<p>10000元</p>
+                			<h2>2015-06-10</h2>
+                		</div>
+                		<div class="stepList">
+                			<p>申购嘉实货币A </p>
+                			<p>10000元</p>
+                			<h2>2015-06-10</h2>
+                		</div>
+                		<div class="stepList">
+                			<p>申购嘉实货币A </p>
+                			<p>10000元</p>
+                			<h2>2015-06-10</h2>
+                		</div>
+                	</div>
+                </div>
+	</div>
+
+</body>
+</html>
