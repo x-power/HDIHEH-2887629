@@ -58,9 +58,15 @@ function productType(obj){
 					}
 					this.className = 'active';
 					childNode[this.index].style.display = 'block';
+					if(topbarList[0].className != 'active'){
+						document.querySelector('body').style.paddingTop = 50+'px';
+					}else{
+						document.querySelector('body').style.paddingTop = 130+'px';
+					}
 					return false;
 				}, false);
 			}
+
 		}
 
 		tab(topbarList,astrList);
@@ -68,6 +74,7 @@ function productType(obj){
 		tab(ainviaTab,Invia);
 
 		tab(hqlTypeA,hqlConA);
+
 
 
 
