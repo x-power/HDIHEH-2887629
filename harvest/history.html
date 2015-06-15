@@ -95,6 +95,9 @@
 	});
 	
 })()
+function test(){
+	alert(1);
+}
 //右侧scroll
 function loaded () {
 	 new IScroll('#wrapper');
@@ -119,8 +122,19 @@ document.addEventListener('touchmove', function (e) { e.preventDefault();}, fals
                 <p>十一月</p>
                 <p>十二月</p>
 	</div>
+	
 	<div class="footSetp" id="wrapper" style="display:block">
         	<div class="scroller">
+        		<div class="hisTab">
+					<div class="inviaTab" style="width:100%">
+						<div style="padding-right:20px">
+							<p>
+							<a href="" class="active" onclick = "test()">今日</a>
+							<a href="" class="">历史</a>
+							</p>
+						</div>
+					</div>
+				</div>
         		<div class="monthStepTop">五月份的足迹</div>
         	        <div class="line"></div>
                 	<div class="monthStep">
@@ -169,6 +183,7 @@ document.addEventListener('touchmove', function (e) { e.preventDefault();}, fals
                 			<p>10000元</p>
                 			<h2>2015-06-10</h2>
                 		</div>
+
                 	</div>
                 </div>
 	</div>
