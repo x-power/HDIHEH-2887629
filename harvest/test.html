@@ -12,6 +12,17 @@
  .fileInput{width:102px;height:34px; background:url(http://funet8.com/img/20150411upFileBtn.png);overflow:hidden;position:relative;}
  .upfile{position:absolute;top:-100px;}
  .upFileBtn{width:102px;height:34px;opacity:0;filter:alpha(opacity=0);cursor:pointer;}
+
+
+
+
+ .aaa{position: relative;}
+  .aaa input{width: 168px;}
+ .aaa span{
+ 	position: absolute;
+ 	width: 68px;height: 20px;
+ 	background: #000;left:0;
+ }
 </style>
 <div class="fileInput left">
            <input type="file" name="upfile" id="upfile" class="upfile" onchange="document.getElementById('upfileResult').innerHTML=this.value"/>
@@ -23,79 +34,17 @@
 <p>--------------------------------------</p>
 
 
-<input type="file" />
-
-
-
-
-<p>====================</p>
-
-<script language="javascript" type="text/javascript">
- var allowExt = ['jpg', 'gif', 'bmp', 'png', 'jpeg'];
- var preivew = function(file, container){
-  try{
-  var pic = new Picture(file, container);
-  }catch(e){
-  alert(e);
-  }
- }
- //缩略图类定义
-   var Picture = function(file, container){
-  var height = 0, 
-  widht = 0, 
-  ext = '',
-  size = 0,
-  name  = '',
-  path  = '';
-  var self = this;
-  if(file){ 
-    name = file.value;
-  if (window.navigator.userAgent.indexOf("MSIE")>=1){ 
-   file.select(); 
-   path = document.selection.createRange().text; 
-  }else if(window.navigator.userAgent.indexOf("Firefox")>=1){ 
-   if(file.files){ 
-   path = file.files.item(0).getAsDataURL(); 
-   }else{
-   path = file.value;
-   }
-  } 
-  }else{
-  throw "bad file";
-  } 
-
-
-  ext = name.substr(name.lastIndexOf("."), name.length);
-
-  if(container.tagName.toLowerCase() != 'img'){
-  throw "container is not a valid img label";
-  container.visibility = 'hidden';
-  }
-  container.src = path;
-  container.alt = name;
-  container.style.visibility = 'visible';
-  height = container.height;
-  widht = container.widht;
-  size  = container.fileSize;
-
-
-  this.get = function(name){
-  return self[name];
-  }
-
-  this.isValid = function(){
-  if(allowExt.indexOf(self.ext) !== -1){
-   throw 'the ext is not allowed to upload';
-   return false;
-  }
-  }
- }
-</script>
-<div class='previewDemo'>
-	sass
-	 <input id="file" type="file" onchange="preivew(this, document.getElementById('img'));">
-	 <img id="img" style="visibility:hidden" height="100px" width="100px">
+<div class="aaa">
+	<form action="" name="form">
+		<input type="file" name = 'a' />
+		<span onclick = "document.form.a.click()"></span>
+	</form>
 </div>
+<script>
+	window.onload = function(){
+
+	}
+</script>
 </body>
 </html>
  

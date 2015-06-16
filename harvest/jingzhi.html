@@ -54,23 +54,14 @@
 				document.querySelector('.mainWarp').style.paddingTop = 175+'px';
 			}
 		}
-		function more2(){
-			if(hideType[1].style.display == 'block'){
-				hideType[1].style.display = 'none';
-				this.innerHTML = '更多'
-			}else{
-				hideType[1].style.display = 'block';
-				this.innerHTML = '收起';
-			}
-		}
 
 		all[0].addEventListener('click',more,false);
-		all[1].addEventListener('click',more2,false);
 
 		mySew.onclick = function(){
-			document.querySelector('.seeAbout').style.top = '0%';
+			document.querySelector('.seeAbout').style.left = '0';
+			document.querySelector('.seeAboutHead').style.left = '0';
 		}
-		document.querySelector('.seeBack').onclick = function(){document.querySelector('.seeAbout').style.top = '100%';}
+		document.querySelector('.seeBack').onclick = function(){document.querySelector('.seeAbout').style.left = '100%';document.querySelector('.seeAboutHead').style.left = '100%';}
 	}
 
 </script>
@@ -298,40 +289,14 @@
 			</table>
 		</div>
 	</div>
-	<div class="seeAbout" style='display:none'>
-		<div class="jzHeader jzHs">
+	<div class="seeAbout" style='display:nonse0'>
+		<div class="jzHeader jzHs seeAboutHead">
 			<div class="jzTit">
 				<i>我的关注</i>
 				<p class="seeBack">返回上层</p>
 			</div>
-			<div class="jzType">
-				<ul class="fix">
-					<li class="active" onclick="toggerType(this)">全部</li>
-					<li onclick="toggerType(this)">股票</li>
-					<li onclick="toggerType(this)">混合</li>
-					<li onclick="toggerType(this)">货币</li>
-					<li class="more">更多</li>
-				</ul>
-				<ul class="fix hideType" >
-					<li onclick="toggerType(this)">ODII</li>
-					<li onclick="toggerType(this)">债券</li>
-					<li onclick="toggerType(this)">指数</li>
-					<li onclick="toggerType(this)">理财</li>
-				</ul>
-			</div>
 		</div>
-		<div class="jzSearch jzHeader" style="display:none">
-			<div class="jzTit back">
-				基金查询
-				<p>返回上层</p>
-			</div>
-			<div class="searchBox">
-				<input type="text" placeholder="全部">
-				<b></b>
-			</div>
-		</div>
-
-		<div class="jzTable">
+		<div class="jzTable seeAboutjzTable">
 			<table>
 				<thead>
 					<th>基金名称</th>
@@ -339,6 +304,26 @@
 					<th>日涨跌↓</th>
 					<th>今年以来↓</th>
 				</thead>
+				<tbody style="visibility:hidden;">
+					<tr class="star">
+						<td class="ico">
+							<div>
+								<p>嘉实策略混合</p>
+								<b>070011</b>
+							</div>
+						</td>
+						<td class="jzSz">
+							<p>1.123</p>
+							<b>15/05/05</b>
+						</td>
+						<td class="dayupd">7.85%</td>
+						<td class="dayupd">101.23%</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="jzTable">
+			<table>
 				<tbody>
 					<tr class="star">
 						<td class="ico">
