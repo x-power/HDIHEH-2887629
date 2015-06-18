@@ -1636,10 +1636,10 @@ body {
   box-sizing: border-box; }
 
 /* line 1342, ../scss/style.scss */
-/* .adsDate input {
+.adsDate input {
   background: none;
   border: none;
-  color: #fff; } */
+  color: #fff; }
 /* line 1347, ../scss/style.scss */
 .adsDate ul {
   width: 100%;
