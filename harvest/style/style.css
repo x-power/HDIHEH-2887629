@@ -1637,7 +1637,7 @@ body {
 
 /* line 1342, ../scss/style.scss */
 .adsDate input {
-  background: #623c91;
+
   color: #fff; }
 ::-webkit-datetime-edit { padding: 1px; background:none; }
 ::-webkit-datetime-edit-fields-wrapper { background-color:none; }
