@@ -1666,7 +1666,7 @@ body {
   .adsDate .startDate div, .adsDate .endDate div {
     color: #fff;
     display: inline-block;
-    max-width: 110px;
+    
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box; }
