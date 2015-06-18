@@ -1639,6 +1639,11 @@ body {
 .adsDate input {
   background: #623c91;
   color: #fff; }
+::-webkit-datetime-edit { padding: 1px; background:none; }
+::-webkit-datetime-edit-fields-wrapper { background-color:none; }
+::-webkit-datetime-edit-text { color: #4D90FE; padding: 0 .3em; }
+::-webkit-inner-spin-button { visibility: hidden; }
+input[type="date"]{border:none;}
 /* line 1347, ../scss/style.scss */
 .adsDate ul {
   width: 100%;
