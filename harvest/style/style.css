@@ -1639,6 +1639,7 @@ body {
 .adsDate input {
   background:transparent;
   color: #fff; }
+  .sdtime p{margin-top:5px;}
 
 input[type="date"]{border:none;}
 /* line 1347, ../scss/style.scss */
