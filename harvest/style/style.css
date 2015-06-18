@@ -1637,8 +1637,7 @@ body {
 
 /* line 1342, ../scss/style.scss */
 .adsDate input {
-  background: none;
-  border: none;
+  background: #623c91;
   color: #fff; }
 /* line 1347, ../scss/style.scss */
 .adsDate ul {
