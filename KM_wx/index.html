@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="telephone=no" name="format-detection" />
+<title></title>
+<link rel="stylesheet" href="style/style.css">
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/iscroll.js"></script>
+<script>
+    var iscroll;
+    var length = 0, num = 0,addAugment = 5;
+
+    function pop(){
+    	$('.fast_track').css('bottom','0');
+    	document.querySelector('.warp').addEventListener('click', function (ev) {
+			$('.fast_track').css('bottom','-185px');
+			ev.stopPropagation();
+			return false;
+		}, true);
+    }
+
+	function pullUpAction(num,psize){
+		$.ajax({
+			url:'json/approve.json',
+			data:{},
+			dataType:'json',
+			success:function(json){
+				var ele = json.info;
+				length = json.sum;
+			 
+				ele=ele.slice(num,num+psize);
+			
+				for(var i=0;i<ele.length;i++){
+					var href = "javascript:void(0)";
+					if(ele[i].isOpen){
+						href = ele[i].href;
+					}else{
+						href = 'javascript:void(0)'
+					}
+					if(ele[i].fast_track){
+						href = 'javascript:pop()';
+					}
+
+					if(ele[i].isapprove){
+						var str = '<li>'+
+									'<a href="'+href+'">'+
+										'<div class="baseInfo">'+
+											'<h2>'+ele[i].name+'</h2>'+
+											'<span>'+ele[i].date+'</span>'+
+										'</div>'+
+										'<p>'+ele[i].content+'</p>'+
+										'<i class="hasIco"></i>'+
+									'</a>'+
+								'</li>';
+					}else{
+						var str = '<li>'+
+								'<a href="'+href+'">'+
+									'<div class="baseInfo">'+
+										'<h2>'+ele[i].name+'</h2>'+
+										'<span>'+ele[i].date+'</span>'+
+									'</div>'+
+									'<p>'+ele[i].content+'</p>'+
+								'</a>'+
+							'</li>';
+					}
+
+
+
+					$('.iscroll ul').append(str);
+
+				}
+				num= num+psize;
+				$("#numHidden").val(num);
+			}
+		})
+	}
+
+
+
+	pullUpAction(num,11);
+
+
+	function loaded(){
+		pullUpEl = document.getElementById('pullUp');	
+		pullUpOffset = pullUpEl.offsetHeight;
+
+		iscroll = new iScroll("warp",{
+			preventDefault: false,
+	        scrollbars: true,
+	        shrinkScrollbars: 'scale',
+	        checkDOMChanges:true,
+	        onRefresh: function () {
+				if (pullUpEl.className.match('loading')) {
+					pullUpEl.className = '';
+					pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
+				}
+			},
+			onScrollMove: function () {
+				if (this.y < (this.maxScrollY - 5) && !pullUpEl.className.match('flip')) {
+					pullUpEl.className = 'flip';
+					pullUpEl.querySelector('.pullUpLabel').innerHTML = '松手开始更新...';
+					this.maxScrollY = this.maxScrollY;
+				} else if (this.y > (this.maxScrollY + 5) && pullUpEl.className.match('flip')) {
+					pullUpEl.className = '';
+					pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
+					this.maxScrollY = pullUpOffset;
+				}
+			},
+			onScrollEnd: function () {
+				if (pullUpEl.className.match('flip')) {
+					pullUpEl.className = 'loading';
+					pullUpEl.querySelector('.pullUpLabel').innerHTML = '加载中...';
+					num = parseInt( $("#numHidden").val());
+					if(num >= length){
+						pullUpEl.querySelector('.pullUpLabel').innerHTML = '已经没有更多信息';
+					}
+					pullUpAction(num,addAugment);
+				}
+			}
+		});
+	}
+
+
+	//初始化绑定iScroll控件 
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	document.addEventListener('DOMContentLoaded', loaded, false); 
+</script>
+</head>
+<body>
+	<div class="warp">
+		<div class="isShow_approve">
+			<div class="onOff">
+				只显示可审批项
+				<p><span class="labelON"></span></p>
+			</div>
+		</div>
+		<div class="approveList" id="warp">
+			<div class="iscroll">
+				<ul>
+				</ul>
+				<div id="pullUp">
+					<span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" id="numHidden" />
+	</div>
+
+	<div class="fast_track">
+		<textarea placeholder = "点击输入审批意见"></textarea>
+		<div class="fastBtn fix">
+			<a href="" class="l">同意</a>
+			<a href="" class="r">拒绝</a>
+		</div>
+	</div>
+</body>
+</html>

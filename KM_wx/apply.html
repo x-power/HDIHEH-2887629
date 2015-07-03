@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="telephone=no" name="format-detection" />
+<title></title>
+<link rel="stylesheet" href="style/apply.css">
+<script src="js/jquery-2.1.4.min.js"></script>
+<script>
+
+	window.onload = function(){
+
+		var aA = document.querySelectorAll('.itemList li');
+		var aA2 = document.querySelectorAll('#itemHidden li');
+		var aDiv = document.querySelectorAll('.itemWrap>div');
+		var oFixedScroll = document.querySelector('.fixedScroll');
+		var menu = document.querySelector('.itemList');
+
+
+		var firstHash = window.location.hash.substring(1) || 'cost';
+		
+		for(var i=0;i<aA.length;i++){
+			aA[i].onclick = function(){
+				var hash = this.dataset.hash;
+				window.location.hash = hash;
+				for(var i=0;i<aDiv.length;i++){
+					aDiv[i].style.display = 'none';
+					aA[i].className = ''; 
+					aA2[i].className = '';
+					if( hash == aDiv[i].dataset.hash ){
+						aDiv[i].style.display = 'block';
+						aA[i].className = 'active';
+						aA2[i].className = 'active';
+					}
+				}
+				window.onhashchange = null;
+			};
+		}
+		
+		window.onhashchange = function(){
+			window.location.reload();
+		};
+		
+
+		for(var i=0;i<aDiv.length;i++){
+			if( firstHash == aDiv[i].dataset.hash ){
+				aDiv[i].style.display = 'block';
+				aA[i].className = 'active';
+				aA2[i].className = 'active';
+			}else{
+				aDiv[i].style.display = 'none';
+				aA[i].className = '';
+				aA2[i].className = '';
+			}
+		}
+
+
+
+		//scroll fixedTop
+
+		window.onscroll = function(){
+
+			if(document.body.scrollTop >= menu.offsetTop){
+				document.querySelector('#itemHidden').style.display="block";
+			}else{
+				document.querySelector('#itemHidden').style.display="none";
+			}
+		}
+
+		//scrollTo
+
+		var afixedScrollli = document.querySelectorAll('.fixedScroll li');
+		var ascrollTo = document.querySelectorAll('.scrollTo');
+
+		var arr = [];
+		for(var i=0;i<afixedScrollli.length;i++){
+			arr.push(ascrollTo[i].offsetTop);
+		}
+
+		
+
+		for(var i=0;i<afixedScrollli.length;i++){
+
+			afixedScrollli[i].onclick = function(){
+
+				document.body.scrollTop = arr[i];
+
+			}
+		}
+
+		document.documentElement.scrollTop = 100;
+
+	};
+
+</script>
+</head>
+<body>
+	<header class="baseInfo">
+		<p>单号：p102-15041700011</p>
+		<p>标题：赵琦[手机费]的报销单</p>
+		<p class="state">状态：待支付</p>
+		<div>
+			<span>金额</span>
+			<b>120.00</b>
+		</div>
+	</header>
+	<div class="itemList" id="itemList">
+		<ul>
+			<li class="active" data-hash="cost">费用说明</li>
+			<li data-hash="message">信息关联</li>
+			<li data-hash="approve">审批/留言</li>
+		</ul>
+	</div>
+	<div class="itemList" id="itemHidden">
+		<ul>
+			<li data-hash="cost">费用说明</li>
+			<li data-hash="message">信息关联</li>
+			<li data-hash="approve">审批/留言</li>
+		</ul>
+	</div>
+	
+	<div class="itemWrap">
+		<div data-hash="cost" class="cost">
+			<div class="costInfo scrollTo" id="a">
+				<ul class="fix">
+					<li><span>所属公司</span><b>博趣科技</b></li>
+					<li><span>费用归口</span><b>彭小龙</b></li>
+					<li><span>经办人</span><b>高雅</b></li>
+					<li><span>责任人</span><b>高雅</b></li>
+				</ul>
+			</div>
+			<div class="costListWrap scrollTo" id="b">
+				<div class="costList">
+					<ul>
+						<li><span>预算科目</span><b>收入相关费用-出差费</b></li>
+						<li><span>成本中心</span><b>渠道发展部-广东</b></li>
+						<li><span>事项/负责人</span><b>日常</b></li>
+						<li><span>产品/项目</span><b>所有产品</b></li>
+						<li><span>客户</span><b>所有客户</b></li>
+						<li><span>报销金额</span><b>120.00</b></li>
+					</ul>
+				</div>
+				<div class="costList">
+					<ul>
+						<li><span>预算科目</span><b>收入相关费用-出差费</b></li>
+						<li><span>成本中心</span><b>渠道发展部-广东</b></li>
+						<li><span>事项/负责人</span><b>日常</b></li>
+						<li><span>产品/项目</span><b>所有产品</b></li>
+						<li><span>客户</span><b>所有客户</b></li>
+						<li><span>报销金额</span><b>120.00</b></li>
+					</ul>
+				</div>
+			</div>
+			<div class="costSm scrollTo" id="c">
+				<p>高压电子设备报销单所属公司剥去可以高压电子设备报销单所属公司剥去可以高压电子</p>
+				<p>高压电子设备报销单所属公司剥去</p>
+				<p>高压电子设备报销单所属公司剥去可以高压电子设备报销单所属公司剥去可以高压电子</p>
+			</div>
+			<div class="fixedScroll">
+				<ul>
+					<li><a href="#a">发起说明</a></li>
+					<li><a href="#b">费用明细</a></li>
+					<li><a href="#c">备注</a></li>
+				</ul>
+			</div>
+		</div>
+		<div data-hash="message" class="message">
+			<div>
+				<p><a href="">差旅申请补充.png[附件]</a></p>
+				<p><a href="">其他补充.png[附件]</a></p>
+			</div>
+		</div>
+		<div data-hash="approve" class="approve">
+			<div class="idea">
+				<h2>审批意见</h2>
+				<ul>
+					<li><span>审批环节</span><b>收入相关费用-出差费</b></li>
+					<li><span>审批人</span><b>渠道发展部-广东</b></li>
+					<li><span>审批意见</span><b>日常</b></li>
+					<li><span>送达/审批时间</span><b>所有产品</b></li>
+				</ul>
+			</div>
+			<div class="leaveWord">
+				<h2>留言</h2>
+				<ul>
+					<li><span>周扬</span><b>补出差申请单</b></li>
+					<li><span>彭小龙</span><b>上次的差旅报销漏掉了一些中心报</b></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<ul class="fix">
+			<li>同意</li>
+			<li>不同意</li>
+		</ul>
+	</footer>
+	
+	
+</body>
+</html>
