@@ -10,7 +10,7 @@
 <script src="js/jquery-2.1.4.min.js"></script>
 <script>
 
-	window.onload = function(){
+	window.onload = window.onscroll = function(){
 
 		var aA = document.querySelectorAll('.itemList li');
 		var aA2 = document.querySelectorAll('#itemHidden li');
@@ -59,41 +59,37 @@
 
 
 		//scroll fixedTop
-
-		window.onscroll = function(){
-
-			if(document.body.scrollTop >= menu.offsetTop){
-				document.querySelector('#itemHidden').style.display="block";
-			}else{
-				document.querySelector('#itemHidden').style.display="none";
-			}
-		}
-
-		//scrollTo
-
 		var afixedScrollli = document.querySelectorAll('.fixedScroll li');
 		var ascrollTo = document.querySelectorAll('.scrollTo');
 
+		if(document.body.scrollTop >= menu.offsetTop){
+			document.querySelector('#itemHidden').style.display="block";
+		}else{
+			document.querySelector('#itemHidden').style.display="none";
+		}
+	
+
+		//scrollTo
+
+
 		var arr = [];
+		
 		for(var i=0;i<afixedScrollli.length;i++){
-			arr.push(ascrollTo[i].offsetTop);
+			arr.push(ascrollTo[i].offsetTop-30);
+			afixedScrollli[i].index = i;
+			afixedScrollli[i].onclick = function(){
+				document.body.scrollTop = arr[this.index];
+			}
 		}
 
 		
 
-		for(var i=0;i<afixedScrollli.length;i++){
-
-			afixedScrollli[i].onclick = function(){
-
-				document.body.scrollTop = arr[i];
-
-			}
-		}
-
-		document.documentElement.scrollTop = 100;
+			
+		
 
 
 	};
+
 
 </script>
 </head>
@@ -124,7 +120,7 @@
 	
 	<div class="itemWrap">
 		<div data-hash="cost" class="cost">
-			<div class="costInfo scrollTo" id="a">
+			<div class="costInfo scrollTo">
 				<ul class="fix">
 					<li><span>所属公司</span><b>博趣科技</b></li>
 					<li><span>费用归口</span><b>彭小龙</b></li>
@@ -132,47 +128,7 @@
 					<li><span>责任人</span><b>高雅</b></li>
 				</ul>
 			</div>
-			<div class="costListWrap scrollTo" id="b">
-				<div class="costList">
-					<ul>
-						<li><span>预算科目</span><b>收入相关费用-出差费</b></li>
-						<li><span>成本中心</span><b>渠道发展部-广东</b></li>
-						<li><span>事项/负责人</span><b>日常</b></li>
-						<li><span>产品/项目</span><b>所有产品</b></li>
-						<li><span>客户</span><b>所有客户</b></li>
-						<li><span>报销金额</span><b>120.00</b></li>
-					</ul>
-				</div>
-				<div class="costList">
-					<ul>
-						<li><span>预算科目</span><b>收入相关费用-出差费</b></li>
-						<li><span>成本中心</span><b>渠道发展部-广东</b></li>
-						<li><span>事项/负责人</span><b>日常</b></li>
-						<li><span>产品/项目</span><b>所有产品</b></li>
-						<li><span>客户</span><b>所有客户</b></li>
-						<li><span>报销金额</span><b>120.00</b></li>
-					</ul>
-				</div>
-				<div class="costList">
-					<ul>
-						<li><span>预算科目</span><b>收入相关费用-出差费</b></li>
-						<li><span>成本中心</span><b>渠道发展部-广东</b></li>
-						<li><span>事项/负责人</span><b>日常</b></li>
-						<li><span>产品/项目</span><b>所有产品</b></li>
-						<li><span>客户</span><b>所有客户</b></li>
-						<li><span>报销金额</span><b>120.00</b></li>
-					</ul>
-				</div>
-				<div class="costList">
-					<ul>
-						<li><span>预算科目</span><b>收入相关费用-出差费</b></li>
-						<li><span>成本中心</span><b>渠道发展部-广东</b></li>
-						<li><span>事项/负责人</span><b>日常</b></li>
-						<li><span>产品/项目</span><b>所有产品</b></li>
-						<li><span>客户</span><b>所有客户</b></li>
-						<li><span>报销金额</span><b>120.00</b></li>
-					</ul>
-				</div>
+			<div class="costListWrap scrollTo">
 				<div class="costList">
 					<ul>
 						<li><span>预算科目</span><b>收入相关费用-出差费</b></li>
@@ -214,16 +170,16 @@
 					</ul>
 				</div>
 			</div>
-			<div class="costSm scrollTo" id="c">
+			<div class="costSm scrollTo">
 				<p>高压电子设备报销单所属公司剥去可以高压电子设备报销单所属公司剥去可以高压电子</p>
 				<p>高压电子设备报销单所属公司剥去</p>
 				<p>高压电子设备报销单所属公司剥去可以高压电子设备报销单所属公司剥去可以高压电子</p>
 			</div>
 			<div class="fixedScroll">
 				<ul>
-					<li><a href="#a">发起说明</a></li>
-					<li><a href="#b">费用明细</a></li>
-					<li><a href="#c">备注</a></li>
+					<li>发起说明</li>
+					<li>费用明细</li>
+					<li>备注</li>
 				</ul>
 			</div>
 		</div>
