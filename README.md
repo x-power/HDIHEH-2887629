@@ -1,2 +1,2 @@
-# https://x-power.github.io
+# x-power.github.io
 X-POWER
